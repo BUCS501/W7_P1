@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
 
         dbManager = new DatabaseManager(this);
         total = 0.0;
-        scrollView = (ScrollView) findViewById(R.id.scrollView);
+
 
     }
 

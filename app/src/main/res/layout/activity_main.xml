@@ -19,6 +19,18 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/search_bar" />
+
+        <Button
+            android:id="@+id/searchBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/search_btn" />
+
+        <TextView
+            android:id="@+id/searchResult"
+            android:layout_width="match_parent"
+            android:layout_height="51dp"
+            android:gravity="center|center_vertical" />
     </LinearLayout>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

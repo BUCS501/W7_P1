@@ -4,10 +4,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ScrollView;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -19,6 +22,8 @@ public class MainActivity extends AppCompatActivity {
     private double total;
     private ScrollView scrollView;
     private AutoCompleteTextView searchBar;
+    private TextView searchResult;
+    private Button searchBtn;
     private int buttonWidth;
 
     @Override
@@ -27,25 +32,23 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         dbManager = new DatabaseManager(this);
+        updateSearchBar();
 
-        ArrayList<Friend> friends = dbManager.selectAll();
-        ArrayList<String> friendsEmails = new ArrayList<>();
-        for (Friend friend : friends) {
-            friendsEmails.add(friend.getEmail());
-        }
+        searchResult = (TextView) findViewById(R.id.searchResult);
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, friendsEmails);
-
-        searchBar = (AutoCompleteTextView) findViewById(R.id.searchBar);
-        searchBar.setAdapter(adapter);
-        searchBar.setThreshold(1);
-
-
-
-
-        dbManager = new DatabaseManager(this);
-        total = 0.0;
-
+        searchBtn = (Button) findViewById(R.id.searchBtn);
+        searchBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String strToSearch = searchBar.getText().toString();
+                Friend friend = dbManager.selectByEmail(strToSearch);
+                if (friend == null) {
+                    searchResult.setText("No friend found please try again");
+                } else {
+                    searchResult.setText(friend.getName());
+                }
+            }
+        });
 
     }
 
@@ -85,5 +88,25 @@ public class MainActivity extends AppCompatActivity {
 
         }
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        updateSearchBar();
+    }
+
+    private void updateSearchBar() {
+        ArrayList<Friend> friends = dbManager.selectAll();
+        ArrayList<String> friendsEmails = new ArrayList<>();
+        for (Friend friend : friends) {
+            friendsEmails.add(friend.getEmail());
+        }
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.select_dialog_item, friendsEmails);
+
+        searchBar = (AutoCompleteTextView) findViewById(R.id.searchBar);
+        searchBar.setThreshold(1);
+        searchBar.setAdapter(adapter);
     }
 }

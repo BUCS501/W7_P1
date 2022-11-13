@@ -11,6 +11,7 @@
     <string name="button_add">ADD</string>
     <string name="button_back">BACK</string>
     <string name="search_bar">Start searching here</string>
+    <string name="search_btn">Search</string>
     <string name="first_name">First Name</string>
     <string name="last_name">Last Name</string>
     <string name="email">Email</string>

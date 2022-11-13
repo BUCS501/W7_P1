@@ -94,4 +94,18 @@ public class DatabaseManager extends SQLiteOpenHelper {
                     cursor.getString( 1 ), cursor.getString(2),cursor.getString( 3 ) );
         return friend;
     }
+
+    public Friend selectByEmail( String email ) {
+        String sqlQuery = "select * from " + TABLE_FRIEND;
+        sqlQuery += " where " + EMAIL + " = '" + email + "'";
+
+        SQLiteDatabase db = this.getWritableDatabase( );
+        Cursor cursor = db.rawQuery( sqlQuery, null );
+
+        Friend friend = null;
+        if( cursor.moveToFirst( ) )
+            friend =new Friend( Integer.parseInt( cursor.getString( 0 ) ),
+                    cursor.getString( 1 ), cursor.getString(2),cursor.getString( 3 ) );
+        return friend;
+    }
 }

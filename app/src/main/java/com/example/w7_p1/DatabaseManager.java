@@ -58,6 +58,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
 
         String sqlUpdate = "update " + TABLE_FRIEND;
         sqlUpdate += " set " + FIRSTNAME + " = '" + firstname + "', " + LASTNAME + " = '" + lastname + "', " + EMAIL + " = '" + email + "'";
+        sqlUpdate += " where " + ID + " = " + id;
 
 
         db.execSQL( sqlUpdate );

@@ -37,9 +37,11 @@
         android:layout_below="@+id/emailEditText"
         android:text="@string/submit"
         android:id="@+id/submitButton"
+        android:onClick="insert"
         />
 
     <Button
+        android:onClick="goBack"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/submitButton"

@@ -53,11 +53,11 @@ public class DatabaseManager extends SQLiteOpenHelper {
         db.close( );
     }
 
-    public void updateById( int id, String name, double price ) {
+    public void updateById( int id, String firstname, String lastname, String email ) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         String sqlUpdate = "update " + TABLE_FRIEND;
-        sqlUpdate += " set " + FIRSTNAME + " = '" + name + "', " + LASTNAME + " = '" + name + "', " + EMAIL + " = '" + name + "' " + " where " + ID + " = " + id;
+        sqlUpdate += " set " + FIRSTNAME + " = '" + firstname + "', " + LASTNAME + " = '" + lastname + "', " + EMAIL + " = '" + email + "'";
 
 
         db.execSQL( sqlUpdate );

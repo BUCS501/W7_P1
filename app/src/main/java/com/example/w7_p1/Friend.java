@@ -46,6 +46,10 @@ public class Friend {
         return email;
     }
 
+    public String getName() {
+        return firstname + " " + lastname;
+    }
+
     public String toString() {
         return id + "; " + firstname + "; " + lastname + "; " + email;
     }

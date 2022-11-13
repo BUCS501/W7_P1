@@ -26,8 +26,8 @@ public class InsertActivity extends AppCompatActivity {
         // insert new candy in database
         try {
             double price = Double.parseDouble( priceString );
-            Candy candy = new Candy( 0, name, price );
-            dbManager.insert( candy );
+            //Candy candy = new Candy( 0, name, price );
+            //dbManager.insert( candy );
             Toast.makeText( this, "Candy added", Toast.LENGTH_SHORT ).show( );
         } catch( NumberFormatException nfe ) {
             Toast.makeText( this, "Price error", Toast.LENGTH_LONG ).show( );

@@ -18,24 +18,30 @@ public class InsertActivity extends AppCompatActivity {
 
     public void insert( View v ) {
         // Retrieve name and price
-        EditText nameEditText = ( EditText) findViewById( R.id.input_name );
-        EditText priceEditText = ( EditText) findViewById( R.id.input_price );
-        String name = nameEditText.getText( ).toString( );
-        String priceString = priceEditText.getText( ).toString( );
+        EditText firstName = (EditText) findViewById( R.id.firstnameEditText );
+        EditText lastName = (EditText) findViewById( R.id.lastnameEditText );
+        EditText email = (EditText) findViewById( R.id.emailEditText );
+
+        String firstNameStr = firstName.getText().toString();
+        String lastNameStr = lastName.getText().toString();
+        String emailStr = email.getText().toString();
+
+
 
         // insert new candy in database
         try {
-            double price = Double.parseDouble( priceString );
-            Candy candy = new Candy( 0, name, price );
-            dbManager.insert( candy );
-            Toast.makeText( this, "Candy added", Toast.LENGTH_SHORT ).show( );
+
+            Friend friend = new Friend( 0, firstNameStr, lastNameStr, emailStr );
+            dbManager.insert( friend );
+            Toast.makeText( this, "Friend added", Toast.LENGTH_SHORT ).show( );
         } catch( NumberFormatException nfe ) {
-            Toast.makeText( this, "Price error", Toast.LENGTH_LONG ).show( );
+            Toast.makeText( this, "Error", Toast.LENGTH_LONG ).show( );
         }
 
         // clear data
-        nameEditText.setText( "" );
-        priceEditText.setText( "" );
+        firstName.setText( "" );
+        lastName.setText( "" );
+        email.setText( "" );
     }
 
     public void goBack( View v ) {

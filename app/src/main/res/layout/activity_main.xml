@@ -8,5 +8,17 @@
     android:fitsSystemWindows="true"
     tools:context="com.example.w7_p1.MainActivity">
 
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
 
-    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+        <AutoCompleteTextView
+            android:id="@+id/searchBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/search_bar" />
+    </LinearLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

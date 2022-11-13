@@ -69,15 +69,15 @@ public class MainActivity extends AppCompatActivity {
                         = new Intent(this, InsertActivity.class);
                 this.startActivity(insertIntent);
                 return true;
-            case R.id.update:
+            case R.id.delete:
                 Intent deleteIntent
                         = new Intent(this, DeleteActivity.class);
                 this.startActivity(deleteIntent);
                 return true;
-            case R.id.delete:
-                //Intent updateIntent
-                //       = new Intent(this, UpdateActivity.class);
-                //this.startActivity(updateIntent);
+            case R.id.update:
+                Intent updateIntent
+                        = new Intent(this, UpdateActivity.class);
+                this.startActivity(updateIntent);
                 return true;
 
             default:
